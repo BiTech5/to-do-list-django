@@ -1,9 +1,20 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
+from . import models
+from django.http import HttpResponse
 # Create your views here.
 def home(request):
-    return render(request,'index.html')
+    if request.method=='POST':
+        todo_list=str(request.POST.get('todo_list'))
+        if todo_list=="":
+            print("error")
+            return HttpResponse('Error')
+        else:
+            new_todo=models.Todo(user=request.user,task=todo_list)
+            new_todo.save()
+    data=models.Todo.objects.all()
+    return render(request,'index.html',{'data':data})
 
 def login(request):
     if request.method=='POST':
