@@ -10,33 +10,29 @@
                 <div class="card-body p-5">
                   <h2 class="text-uppercase text-center mb-5">Create an account</h2>
     
-                  <form>
+                  <form method="post">
     
                     <div data-mdb-input-init class="form-outline mb-4">
-                      <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Example1cg">Your Name</label>
+                      <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="fir_name"/>
+                      <label class="form-label" for="form3Example1cg">Your First Name</label>
                     </div>
-    
                     <div data-mdb-input-init class="form-outline mb-4">
-                      <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
+                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="last_name"/>
+                        <label class="form-label" for="form3Example1cg">Your Last Name</label>
+                      </div>
+                    <div data-mdb-input-init class="form-outline mb-4">
+                      <input type="email" id="form3Example3cg" class="form-control form-control-lg" name="email"/>
                       <label class="form-label" for="form3Example3cg">Your Email</label>
                     </div>
     
                     <div data-mdb-input-init class="form-outline mb-4">
-                      <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                      <input type="password" id="form3Example4cg" class="form-control form-control-lg" name="password1" />
                       <label class="form-label" for="form3Example4cg">Password</label>
                     </div>
     
                     <div data-mdb-input-init class="form-outline mb-4">
-                      <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
+                      <input type="password" id="form3Example4cdg" class="form-control form-control-lg" name="password2" />
                       <label class="form-label" for="form3Example4cdg">Repeat your password</label>
-                    </div>
-    
-                    <div class="form-check d-flex justify-content-center mb-5">
-                      <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
-                      <label class="form-check-label" for="form2Example3g">
-                        I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
-                      </label>
                     </div>
     
                     <div class="d-flex justify-content-center">
