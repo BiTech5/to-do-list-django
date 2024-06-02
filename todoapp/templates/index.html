@@ -36,10 +36,24 @@
                   <tr>
                     <th scope="row">{{ forloop.counter }}</th>
                     <td>{{ i.task }}</td>
+                    {% if i.status == True %}
+                    <td>Completed</td>
+                    {% else %}
                     <td>In progress</td>
+                    {% endif %}
                     <td>
-                      <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-danger">Delete</button>
-                      <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-success ms-1">Finished</button>
+                      <a href="{% url 'delete' i.task %}">
+                        <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-danger">Delete</button>
+                      </a>
+                    {% if i.status == True %}
+                      <a href="{% url 'update' i.task %}">
+                        <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-success ms-1" disabled>Finished</button>
+                      </a>
+                    {% else %}
+                    <a href="{% url 'update' i.task %}">
+                      <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-success ms-1" >Finished</button>
+                    </a>
+                    {% endif %}
                     </td>
                   </tr>
                 </tbody>

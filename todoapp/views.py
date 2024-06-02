@@ -11,7 +11,7 @@ def home(request):
             print("error")
             return HttpResponse('Error')
         else:
-            new_todo=models.Todo(user=request.user,task=todo_list)
+            new_todo=models.Todo(user=request.user, task=todo_list)
             new_todo.save()
     data=models.Todo.objects.all()
     return render(request,'index.html',{'data':data})
@@ -39,3 +39,13 @@ def register(request):
         return redirect('login')
         # print(first,last)
     return render(request,'register.html')
+
+def delete(request,name):
+    get_todo=models.Todo.objects.get(user=request.user, task=name)
+    get_todo.delete()
+    return redirect('home')
+def update(request,name):
+    get_todo=models.Todo.objects.get(user=request.user, task=name)
+    get_todo.status=True
+    get_todo.save()
+    return redirect('home')
