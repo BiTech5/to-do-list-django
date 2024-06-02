@@ -4,6 +4,8 @@ from django.contrib import auth
 from . import models
 from django.http import HttpResponse
 # Create your views here.
+from django.contrib.auth.decorators import login_required
+@login_required(login_url='/login/')
 def home(request):
     if request.method=='POST':
         todo_list=str(request.POST.get('todo_list'))
@@ -17,6 +19,8 @@ def home(request):
     return render(request,'index.html',{'data':data})
 
 def login(request):
+    if request.user.is_authenticated:
+        return redirect('home')
     if request.method=='POST':
         usernmae=request.POST.get('username')
         password=request.POST.get('password')
@@ -25,8 +29,12 @@ def login(request):
             auth.login(request,valid)
             return redirect('home')
     return render(request,'login.html')
-
+def logoutvie(request):
+    auth.logout(request)
+    return redirect('login')
 def register(request):
+    if request.user.is_authenticated:
+        return redirect('home')
     if request.method=='POST':
         first=request.POST.get('fir_name')
         last=request.POST.get('last_name')

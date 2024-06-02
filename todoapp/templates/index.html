@@ -60,7 +60,9 @@
                 {% endfor %}
               </table>
               <div class="col-12" style="text-align: center;">
-                <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Logout</button>
+                <a href="{% url 'logout' %}">
+                  <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Logout</button>
+                </a>
               </div>
             </div>
           </div>
