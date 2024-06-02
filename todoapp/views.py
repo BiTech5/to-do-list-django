@@ -47,11 +47,12 @@ def register(request):
         return redirect('login')
         # print(first,last)
     return render(request,'register.html')
-
+@login_required(login_url='/login/')
 def delete(request,name):
     get_todo=models.Todo.objects.get(user=request.user, task=name)
     get_todo.delete()
     return redirect('home')
+@login_required(login_url='/login/')
 def update(request,name):
     get_todo=models.Todo.objects.get(user=request.user, task=name)
     get_todo.status=True
